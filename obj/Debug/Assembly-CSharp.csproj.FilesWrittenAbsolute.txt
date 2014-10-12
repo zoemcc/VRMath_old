@@ -1,0 +1,9 @@
+/Users/zoe/VRMath/Temp/bin/Debug/UnityEngine.dll
+/Users/zoe/VRMath/Temp/bin/Debug/UnityEditor.dll
+/Users/zoe/VRMath/Temp/bin/Debug/LeapCSharp.NET3.5.dll
+/Users/zoe/VRMath/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/zoe/VRMath/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/zoe/VRMath/Temp/bin/Debug/Mono.Cecil.dll
+/Users/zoe/VRMath/Temp/bin/Debug/nunit.framework.dll
+/Users/zoe/VRMath/Temp/bin/Debug/Unity.DataContract.dll
+/Users/zoe/VRMath/Temp/bin/Debug/ICSharpCode.NRefactory.dll
