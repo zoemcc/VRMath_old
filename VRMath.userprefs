@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MathNetTest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Grapher2MathNet.cs">
     <Files>
-      <File FileName="Assets/Grapher2.cs" Line="45" Column="1" />
-      <File FileName="Assets/Grapher2.cs" Line="24" Column="18" />
+      <File FileName="Assets/Grapher2MathNet.cs" Line="214" Column="2" />
+      <File FileName="Assets/Grapher2.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/LeapImageRetriever.cs" Line="1" Column="1" />
       <File FileName="Assets/OVR/Scripts/OVRCameraController.cs" Line="1" Column="1" />
       <File FileName="Assets/Grapher1.cs" Line="1" Column="1" />
       <File FileName="Assets/MathVRFuncs/LeapMotionImageMove" Line="1" Column="1" />
       <File FileName="Assets/OVR/Scripts/OVRCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/MathNetTest.cs" Line="3" Column="24" />
+      <File FileName="Assets/MathNetTest.cs" Line="1" Column="1" />
+      <File FileName="Assets/Grapher2MathNet.cs" Line="31" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
