@@ -14,6 +14,11 @@ public class Grapher2MathNet : MonoBehaviour {
 		Ripple,
 		QuadraticForm
 	}
+
+	public enum GridOption {
+		Cartesian,
+		Polar
+	}
 	
 	private delegate float FunctionDelegate (Vector3 p, float t);
 	private static FunctionDelegate[] functionDelegates = {
@@ -26,6 +31,9 @@ public class Grapher2MathNet : MonoBehaviour {
 	};
 	
 	public FunctionOption function;
+	public GridOption gridOption;
+
+	private GridOption currentGridOption;
 	
 	[Range(10, 100)]
 	public int resolution = 50;
@@ -48,14 +56,31 @@ public class Grapher2MathNet : MonoBehaviour {
 		points = new ParticleSystem.Particle[resolution * resolution + resolution];
 		float increment = 1f / (resolution - 1);
 		int i = 0;
-		for (int x = 0; x < resolution; x++) {
-			for (int z = 0; z < resolution; z++) {
-				Vector3 p = new Vector3(increment * (x - resolution / 2.0f), 0f, increment * (z - resolution / 2.0f));
-				points[i].position = p;
-				points[i].color = new Color(p.x + increment * resolution / 2.0f, 0f, p.z + increment * resolution / 2.0f);
-				points[i++].size = 0.1f;
+		// cartesian grid
+		if (gridOption == GridOption.Cartesian) {
+			for (int x = 0; x < resolution; x++) {
+				for (int z = 0; z < resolution; z++) {
+					Vector3 p = new Vector3(increment * (x - resolution / 2.0f), 0f, increment * (z - resolution / 2.0f));
+					points[i].position = p;
+					points[i].color = new Color(p.x + increment * resolution / 2.0f, 0f, p.z + increment * resolution / 2.0f);
+					points[i++].size = 0.1f;
+				}
 			}
 		}
+		//polar grid
+		else if (gridOption == GridOption.Polar) {
+			float thetaIncBy  = (2.0f * Mathf.PI / (resolution - 1));
+			float radiusIncBy = 1.0f / (resolution - 1);
+			for (int radiusInc = 0; radiusInc < resolution; radiusInc++) {
+				for (int thetaInc = 0; thetaInc < resolution; thetaInc++) {
+					Vector3 p = new Vector3(radiusInc * radiusIncBy * Mathf.Cos(thetaInc * thetaIncBy), 0f, radiusInc * radiusIncBy * Mathf.Sin(thetaInc * thetaIncBy));
+					points[i].position = p;
+					points[i].color = new Color(p.x + increment * resolution / 2.0f, 0f, p.z + increment * resolution / 2.0f);
+					points[i++].size = 0.1f;
+				}
+			}
+		}
+		currentGridOption = gridOption;
 		for (int t = 0; t < resolution; t++) {
 			Vector3 p = new Vector3(0f, 0f, 0f);
 			points[i].position = p;
@@ -79,7 +104,7 @@ public class Grapher2MathNet : MonoBehaviour {
 	//}
 	
 	void Update () {
-		if (currentResolution != resolution || points == null) {
+		if (currentResolution != resolution || points == null || currentGridOption != gridOption) {
 			CreateGridPoints();
 		}
 		//if (currentResolution != resolution || optimizationPoints == null) {
@@ -119,7 +144,6 @@ public class Grapher2MathNet : MonoBehaviour {
 		for (int i = 0; i < iterationCount; i++) {
 			ts[i] = i;
 			currentPoint = lastPoint - 0.1f * a * lastPoint;
-		
 			xs[i + 1] = currentPoint.GetArray()[0][0];
 			zs[i + 1] = currentPoint.GetArray()[1][0];
 			lastPoint = currentPoint.Clone();
