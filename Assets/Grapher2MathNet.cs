@@ -17,7 +17,8 @@ public class Grapher2MathNet : MonoBehaviour {
 
 	public enum GridOption {
 		Cartesian,
-		Polar
+		Polar,
+		PolarEllipse
 	}
 	
 	private delegate float FunctionDelegate (Vector3 p, float t);
@@ -32,6 +33,9 @@ public class Grapher2MathNet : MonoBehaviour {
 	
 	public FunctionOption function;
 	public GridOption gridOption;
+
+	[Range(0.05f, 5.0f)]
+	public float learningRate = 0.25f;
 
 	private GridOption currentGridOption;
 	
@@ -71,9 +75,37 @@ public class Grapher2MathNet : MonoBehaviour {
 		else if (gridOption == GridOption.Polar) {
 			float thetaIncBy  = (2.0f * Mathf.PI / (resolution - 1));
 			float radiusIncBy = 1.0f / (resolution - 1);
-			for (int radiusInc = 0; radiusInc < resolution; radiusInc++) {
-				for (int thetaInc = 0; thetaInc < resolution; thetaInc++) {
+			for (int thetaInc = 0; thetaInc < resolution; thetaInc++) {
+				for (int radiusInc = 0; radiusInc < resolution; radiusInc++) {
 					Vector3 p = new Vector3(radiusInc * radiusIncBy * Mathf.Cos(thetaInc * thetaIncBy), 0f, radiusInc * radiusIncBy * Mathf.Sin(thetaInc * thetaIncBy));
+					points[i].position = p;
+					points[i].color = new Color(p.x + increment * resolution / 2.0f, 0f, p.z + increment * resolution / 2.0f);
+					points[i++].size = 0.1f;
+				}
+			}
+		}
+		//polar ellipse grid TODO:: doesn't work yet!!!!
+		else if (gridOption == GridOption.PolarEllipse) {
+			float t = Time.timeSinceLevelLoad;
+			Matrix a = QuadraticFormMatrix(t);
+			float thetaIncBy  = (2.0f * Mathf.PI / (resolution - 1));
+			float radiusIncBy = 1.0f / (resolution - 1);
+			EigenvalueDecomposition eigen = a.EigenvalueDecomposition;
+			
+			//Complex[] eigenValues = eigen.EigenValues;
+			// eigenvalues: 1, -2
+			
+			Matrix eigenVectors = eigen.EigenVectors;
+
+			for (int thetaInc = 0; thetaInc < resolution; thetaInc++) {
+				Matrix currentAngleVector = new Matrix(new double[][] {
+					new double[] {Mathf.Cos(thetaInc * thetaIncBy)},
+					new double[] {Mathf.Sin(thetaInc * thetaIncBy)}});
+				Matrix evscale = eigenVectors * currentAngleVector;
+				float radiusScale = (float) (a * currentAngleVector).Norm2();
+				for (int radiusInc = 0; radiusInc < resolution; radiusInc++) {
+					Vector3 p = new Vector3(radiusScale * radiusInc * radiusIncBy * Mathf.Cos(thetaInc * thetaIncBy), 0f, 
+					                        radiusScale * radiusInc * radiusIncBy * Mathf.Sin(thetaInc * thetaIncBy));
 					points[i].position = p;
 					points[i].color = new Color(p.x + increment * resolution / 2.0f, 0f, p.z + increment * resolution / 2.0f);
 					points[i++].size = 0.1f;
@@ -123,12 +155,8 @@ public class Grapher2MathNet : MonoBehaviour {
 		}
 	
 		//optimization steps
-		double xx =  (double) Mathf.Sin (0.5f * t + .1f);
-		double zz =  (double) Mathf.Cos(0.5f * t);
-		double xz = (double) 0.1f * Mathf.Sin (0.25f * t);
-		Matrix a = new Matrix(new double[][] {
-			new double[] { xx, xz },
-			new double[] { xz, zz } });
+
+		Matrix a = QuadraticFormMatrix(t);
 
 		Matrix currentPoint = new Matrix(new double[][] {
 			new double[] {xStart},
@@ -143,7 +171,7 @@ public class Grapher2MathNet : MonoBehaviour {
 
 		for (int i = 0; i < iterationCount; i++) {
 			ts[i] = i;
-			currentPoint = lastPoint - 0.1f * a * lastPoint;
+			currentPoint = lastPoint - ((double) learningRate) * a * lastPoint;
 			xs[i + 1] = currentPoint.GetArray()[0][0];
 			zs[i + 1] = currentPoint.GetArray()[1][0];
 			lastPoint = currentPoint.Clone();
@@ -208,13 +236,18 @@ public class Grapher2MathNet : MonoBehaviour {
 		return 1f - p.x * p.x * p.z * p.z;
 	}
 
-	private static float QuadraticForm (Vector3 p, float t){
-		double xx =  (double) Mathf.Sin (0.5f * t + .1f);
-		double zz =  (double) Mathf.Cos(0.5f * t);
-		double xz = (double) 0.1f * Mathf.Sin (0.25f * t);
-		Matrix a = new Matrix(new double[][] {
+	private static Matrix QuadraticFormMatrix(float t){
+		double xx = (double)Mathf.Sin (0.5f * t + .1f);
+		double zz = (double)Mathf.Cos (0.5f * t);
+		double xz = (double)0.1f * Mathf.Sin (0.25f * t);
+		Matrix a = new Matrix (new double[][] {
 			new double[] { xx, xz },
 			new double[] { xz, zz } });
+		return a;
+	}
+
+	private static float QuadraticForm (Vector3 p, float t){
+		Matrix a = QuadraticFormMatrix (t);
 		Matrix v = new Matrix(new double[][] {
 			new double[] {p.x},
 			new double[] {p.z}});
