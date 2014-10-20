@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Grapher2MathNet.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VertexDeformShader.shader">
     <Files>
-      <File FileName="Assets/Grapher2MathNet.cs" Line="93" Column="35" />
-      <File FileName="Assets/Grapher2MathNet.cs" Line="274" Column="2" />
+      <File FileName="Assets/VertexDeformShader.shader" Line="7" Column="11" />
+      <File FileName="Assets/Grapher2MathNet.cs" Line="1" Column="1" />
       <File FileName="Assets/Grapher2.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/LeapImageRetriever.cs" Line="1" Column="1" />
@@ -12,12 +12,16 @@
       <File FileName="Assets/MathVRFuncs/LeapMotionImageMove" Line="1" Column="1" />
       <File FileName="Assets/OVR/Scripts/OVRCamera.cs" Line="1" Column="1" />
       <File FileName="Assets/MathNetTest.cs" Line="1" Column="1" />
+      <File FileName="Assets/TestShader.shader" Line="3" Column="1" />
+      <File FileName="Assets/TestShader2.shader" Line="1" Column="1" />
+      <File FileName="Assets/GraphSetter.cs" Line="13" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Grapher2MathNet.cs" selected="True" />
+          <Node name="Assembly-CSharp" expanded="True" />
+          <Node name="Assembly-CSharp-firstpass" expanded="True">
+            <Node name="MathNet.Numerics" selected="True" />
           </Node>
         </State>
       </Pad>
