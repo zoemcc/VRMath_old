@@ -23,6 +23,7 @@
  
          // Uniforms set by a script
          uniform float4x4 _QuadForm; // matrix for quadratic form that determines shape of function
+         uniform float4x4 _EllipseTransformer;
          //float _QuadFormVecxx;
          //float _QuadFormVecxz;
          //float _QuadFormVeczz;
@@ -42,7 +43,10 @@
             //						 (0, 0, 0, 0), (0, 0, 0, 0));
             //float2 vec2d = (input.vertex.x, input.vertex.z);
             
-            float height = 0.5 * mul(input.vertex, mul(_QuadForm, input.vertex));
+            float4 blendedVertex = mul(_EllipseTransformer, input.vertex);
+            
+            
+            float height = mul(blendedVertex, mul(_QuadForm, blendedVertex));
             
             float integralHeight;
             float remainderHeight = modf(10 * abs(height), integralHeight);
@@ -52,7 +56,7 @@
             //float4 blendedVertex = 
               // weight0 * mul(_Trafo0, input.vertex) 
                //+ (1.0 - weight0) * mul(_Trafo1, input.vertex);
-            float4 blendedVertex = input.vertex;
+            //float4 blendedVertex = input.vertex;
             blendedVertex.y += height;
              
             output.pos = mul(UNITY_MATRIX_MVP, blendedVertex);
