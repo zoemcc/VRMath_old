@@ -50,6 +50,7 @@
      <Compile Include="Assets\Grapher1.cs" />
      <Compile Include="Assets\Grapher2.cs" />
      <Compile Include="Assets\Grapher2MathNet.cs" />
+     <Compile Include="Assets\HUDFPS.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\CubeWave.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\GrabHand.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\Grabbable.cs" />

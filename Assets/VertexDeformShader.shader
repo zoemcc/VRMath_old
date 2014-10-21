@@ -1,27 +1,31 @@
 ﻿Shader "Cg shader for plotting 2d functions" {
     Properties {
-        _QuadFormVec ("Quadratic Form Graph", Vector) = (1.0, 0.0, 1.0, 0.0)
-        _QuadFormVecxx ("Quadratic Form xx", Float) = 1.0
-        _QuadFormVecxz ("Quadratic Form xz", Float) = 0.5
-        _QuadFormVeczz ("Quadratic Form zz", Float) = 1.0
+        //_QuadFormVec ("Quadratic Form Graph", Vector) = (1.0, 0.0, 1.0, 0.0)
+        //_QuadFormVecxx ("Quadratic Form xx", Float) = 1.0
+        //_QuadFormVecxz ("Quadratic Form xz", Float) = 0.5
+        //_QuadFormVeczz ("Quadratic Form zz", Float) = 1.0
+        //_QuadFormMatx ("Quadratic Form Matrix", Matrix4x4) = ((1.0, 0, 0, 0), (0, 1.0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0))
         //_QuadForm ("Quadratic Form Form", Matrix) = ((1.0, 0, 0, 0), (0, 1.0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0))
         //_Color ("Main Color", Color) = (1,0.5,0.5,1)
 
     }
    SubShader {
       Pass {   
+         Cull Off
          CGPROGRAM
  
          #pragma vertex vert  
          #pragma fragment frag 
  
          #include "UnityCG.cginc"
+         
+         
  
          // Uniforms set by a script
          uniform float4x4 _QuadForm; // matrix for quadratic form that determines shape of function
-         float _QuadFormVecxx;
-         float _QuadFormVecxz;
-         float _QuadFormVeczz;
+         //float _QuadFormVecxx;
+         //float _QuadFormVecxz;
+         //float _QuadFormVeczz;
  
          struct vertexInput {
             float4 vertex : POSITION;
@@ -34,14 +38,14 @@
          vertexOutput vert(vertexInput input) 
          {
             vertexOutput output;
-            float4x4 _QuadFormMat = ((_QuadFormVecxx, _QuadFormVecxz, 0, 0), (_QuadFormVecxz, _QuadFormVeczz, 0, 0),
-            						 (0, 0, 0, 0), (0, 0, 0, 0));
+            //float4x4 _QuadFormMat = ((_QuadFormVecxx, _QuadFormVecxz, 0, 0), (_QuadFormVecxz, _QuadFormVeczz, 0, 0),
+            //						 (0, 0, 0, 0), (0, 0, 0, 0));
             //float2 vec2d = (input.vertex.x, input.vertex.z);
             
             float height = 0.5 * mul(input.vertex, mul(_QuadForm, input.vertex));
             
             float integralHeight;
-            float remainderHeight = modf(5 * height, integralHeight);
+            float remainderHeight = modf(10 * abs(height), integralHeight);
  
             //float weight0 = input.vertex.z + 0.5; 
                // depends on the mesh
@@ -58,11 +62,12 @@
                // visualize weight0 as red and weight1 as green
             return output;
          }
- 
+ 		 
          float4 frag(vertexOutput input) : COLOR
          {
             return input.col;
          }
+         
  
          ENDCG
       }
