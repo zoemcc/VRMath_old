@@ -59,19 +59,37 @@ public class OptimizationPlot : MonoBehaviour {
 	
 	private int currentResolution;
 	private ParticleSystem.Particle[] optimizationPoints;
+	private LineRenderer optimizationRenderer;
 	
 	private void CreateOptimizationPoints () {
 		currentResolution = resolution;
-		optimizationPoints = new ParticleSystem.Particle[resolution];
+
 		float increment = 1f / (resolution - 1);
 		float logInc = Mathf.Log (increment);
 		int i = 0;
+		/*
+		optimizationPoints = new ParticleSystem.Particle[resolution];
 		for (int t = 0; t < resolution; t++) {
 			Vector3 p = new Vector3(0f, 0f, 0f);
 			optimizationPoints[i].position = p;
 			optimizationPoints[i].color = new Color(increment * resolution / 2, increment * resolution / 2, increment * resolution / 2);
 			optimizationPoints[i++].size = 0.05f;
 		}
+		*/
+		optimizationRenderer.SetVertexCount (iterationCount + 1);
+		
+	}
+
+	void Start () {
+		optimizationRenderer = gameObject.AddComponent<LineRenderer>();
+		//optimizationRenderer = new LineRenderer();
+		optimizationRenderer.SetWidth (0.01f, 0.01f);
+		optimizationRenderer.SetColors (Color.blue, Color.blue);
+		optimizationRenderer.material.shader = Shader.Find ("Particles/Alpha Blended");
+		print (optimizationRenderer.material);
+		//Material (Shader.Find (""));
+		//Material material = Material(Shader.Find ("Particles/Alpha Blended"));
+		//print (material);
 		
 	}
 
@@ -94,24 +112,39 @@ public class OptimizationPlot : MonoBehaviour {
 		Matrix currentHessianInv;
 		Matrix lastPoint = currentPoint.Clone();
 		
-		double[] ts = new double[iterationCount + 1];
-		double[] xs = new double[iterationCount + 1];
-		double[] zs = new double[iterationCount + 1];
-		xs[0] = currentPoint.GetArray()[0][0];
-		zs[0] = currentPoint.GetArray()[1][0];
+		//double[] ts = new double[iterationCount + 1];
+		//double[] xs = new double[iterationCount + 1];
+		//double[] zs = new double[iterationCount + 1];
+		//xs[0] = currentPoint.GetArray()[0][0];
+		//zs[0] = currentPoint.GetArray()[1][0];
+		//optimizatizationVertices 
+
+		Vector3 curVertex = new Vector3();
+		curVertex.x = (float) currentPoint.GetArray()[0][0];
+		curVertex.z = (float) currentPoint.GetArray()[1][0];
+		curVertex.y = f(curVertex, t);
+		optimizationRenderer.SetPosition (0, curVertex);
 		
 		for (int i = 0; i < iterationCount; i++) {
-			ts[i] = i;
+			//ts[i] = i;
 			currentGradient = a * lastPoint;
 			//currentHessianInv = a.Inverse();
 			//currentPoint = lastPoint - ((double) learningRate) * currentHessianInv * currentGradient;
 			currentPoint = lastPoint - ((double) learningRate) * currentGradient;
-			xs[i + 1] = currentPoint.GetArray()[0][0];
-			zs[i + 1] = currentPoint.GetArray()[1][0];
-			lastPoint = currentPoint.Clone();
+			//xs[i + 1] = currentPoint.GetArray()[0][0];
+			//zs[i + 1] = currentPoint.GetArray()[1][0];
+
+			curVertex.x = (float) currentPoint.GetArray()[0][0];
+			curVertex.z = (float) currentPoint.GetArray()[1][0];
+			curVertex.y = f(curVertex, t) + 0.1f;
+			optimizationRenderer.SetPosition(i + 1, curVertex);
+			lastPoint = currentPoint;
 		}
-		ts[iterationCount] = iterationCount;
-		
+
+		//ts[iterationCount] = iterationCount;
+
+		/*
+							*****particle system method******
 		IInterpolationMethod xInterp = Interpolation.Create(ts, xs);
 		IInterpolationMethod zInterp = Interpolation.Create(ts, zs);
 		
@@ -130,6 +163,11 @@ public class OptimizationPlot : MonoBehaviour {
 		}
 		
 		particleSystem.SetParticles(optimizationPoints, optimizationPoints.Length);
+		*/
+
+		/*
+								****** line renderer method ******
+		*/
 
 	}
 	
@@ -163,7 +201,7 @@ public class OptimizationPlot : MonoBehaviour {
 		Matrix vt = v.Clone();
 		vt.Transpose();
 		Matrix v3 = 0.5 * vt * a * v;
-		return (float) (v3.GetArray()[0][0] + 0.1);
+		return (float) v3.GetArray()[0][0];
 	}
 	
 	private static float Sine (Vector3 p, float t){
