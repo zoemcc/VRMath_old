@@ -1,46 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHandLeft.prefab">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ScaleObject.cs">
     <Files>
-      <File FileName="Assets/ScaleObject.cs" Line="23" Column="3" />
+      <File FileName="Assets/ScaleObject.cs" Line="49" Column="1" />
       <File FileName="Assets/LeapMotion/DemoResources/Scripts/Grabbable.cs" Line="1" Column="1" />
-      <File FileName="Assets/ScaleObject.cs" Line="40" Column="1" />
-      <File FileName="Assets/LeapMotion/DemoResources/Scripts/GrabHand.cs" Line="22" Column="2" />
-      <File FileName="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHand.prefab" Line="1" Column="1" />
-      <File FileName="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHandLeft.prefab" Line="26" Column="92" />
+      <File FileName="Assets/ScaleObject.cs" Line="63" Column="1" />
+      <File FileName="Assets/LeapMotion/DemoResources/Scripts/GrabHand.cs" Line="44" Column="1" />
+      <File FileName="Assets/Grapher2MathNet.cs" Line="256" Column="1" />
+      <File FileName="Assets/LeapMotion/Scripts/Hands/RigidHand.cs" Line="1" Column="1" />
+      <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="45" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="LeapMotion" expanded="True" />
-            <Node name="OVR" expanded="True" />
+            <Node name="LeapMotion" expanded="True">
+              <Node name="DemoResources" expanded="True">
+                <Node name="Scripts" expanded="True" />
+              </Node>
+              <Node name="Scripts" expanded="True">
+                <Node name="Hands" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="ScaleObject.cs" selected="True" />
           </Node>
         </State>
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OptimizationPlot.cs">
-    <Files>
-      <File FileName="Assets/Grapher2MathNet.cs" Line="1" Column="1" />
-      <File FileName="Assets/GraphSetter.cs" Line="59" Column="38" />
-      <File FileName="Assets/VertexDeformShader.shader" Line="45" Column="13" />
-      <File FileName="Assets/Grapher2.cs" Line="1" Column="1" />
-      <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
-      <File FileName="Assets/LeapMotion/Scripts/LeapImageRetriever.cs" Line="1" Column="1" />
-      <File FileName="Assets/OVR/Scripts/OVRCameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Grapher1.cs" Line="1" Column="1" />
-      <File FileName="Assets/MathVRFuncs/LeapMotionImageMove" Line="1" Column="1" />
-      <File FileName="Assets/OVR/Scripts/OVRCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/MathNetTest.cs" Line="1" Column="1" />
-      <File FileName="Assets/TestShader.shader" Line="1" Column="1" />
-      <File FileName="Assets/TestShader2.shader" Line="1" Column="1" />
-      <File FileName="Assets/HUDFPS.cs" Line="1" Column="1" />
-      <File FileName="Assets/OptimizationPlot.cs" Line="103" Column="19" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True" selected="True" />
->>>>>>> cecccd0c03e4616a370b42872be968c5ea8798c0
       </Pad>
       <Pad Id="ClassPad">
         <State expanded="True" selected="True" />
@@ -56,13 +40,14 @@
           <Value>debug</Value>
           <Value>curInc</Value>
           <Value>increment</Value>
+          <Value>pinching_</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/zoe/VRMath/Assets/Grapher2MathNet.cs" line="107" />
+      <Breakpoint enabled="false" file="/Users/zoe/VRMath/Assets/Grapher2MathNet.cs" line="107" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
