@@ -35,6 +35,9 @@ public class GraphSetter : MonoBehaviour {
 		eigenValuesMatInvSquareRoot = new Matrix(new double[][] {
 			new double[] {0.0, 0.0},
 			new double[] {0.0, 0.0}});
+
+		controlCube = GameObject.Find ("ControlCube");
+
 	}
 	EigenvalueDecomposition eigen; 
 	
@@ -43,19 +46,26 @@ public class GraphSetter : MonoBehaviour {
 
 	Matrix eigenVectors;
 	ComplexVector eigenValues;
-	Matrix quadForm2dim;
+	public Matrix quadForm2dim;
 	Matrix ellipseTransformer2dim;
 	Matrix eigenValuesMatInvSquareRoot;
+	GameObject controlCube;
 
 	// Update is called once per frame
 	void Update () {
 		// Get Render graph
 		float t = Time.timeSinceLevelLoad;
-		float diagComponent0 = Mathf.Sin (t) + 1.5f;
+		Vector3 scale = controlCube.transform.localScale;
+		float diagComponent0 = scale[1] * 1.0f / scale[0];
 		QuadForm [0, 0] = diagComponent0;
-		float diagComponent2 = Mathf.Cos (t) + 1.5f;
+		float diagComponent2 = scale[1] * 1.0f / scale[2];
 		QuadForm [2, 2] = diagComponent2;
-		float offDiagComponent = 0.5f * Mathf.Sin (1.8f * t) + 0.2f;
+		float offDiagComponent = scale[1] * 0.0f;
+		//float diagComponent0 = Mathf.Sin (t) + 1.5f;
+		QuadForm [0, 0] = diagComponent0;
+		//float diagComponent2 = Mathf.Cos (t) + 1.5f;
+		QuadForm [2, 2] = diagComponent2;
+		//float offDiagComponent = 0.5f * Mathf.Sin (1.8f * t) + 0.2f;
 		QuadForm [2, 0] = offDiagComponent;
 		QuadForm [0, 2] = offDiagComponent;
 		renderer.material.SetMatrix ("_QuadForm", QuadForm);
