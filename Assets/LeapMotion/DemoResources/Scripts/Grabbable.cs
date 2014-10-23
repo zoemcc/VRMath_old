@@ -19,15 +19,19 @@ public class Grabbable : MonoBehaviour {
   public Joint breakableJoint;
   public float breakForce;
   public float breakTorque;
+  public bool scale = false; 
 
   public void OnGrab(){
-    for (int i = 0; i < ignoreOnGrab.Length; ++i)
-      ignoreOnGrab[i].detectCollisions = false;
+    for (int i = 0; i < ignoreOnGrab.Length; ++i) {
+		ignoreOnGrab [i].detectCollisions = false;
+	}
+
 
     if (breakableJoint != null) {
       breakableJoint.breakForce = breakForce;
       breakableJoint.breakTorque = breakTorque;
     }
+	scale = true; 
   }
 
   public void OnRelease(){
@@ -38,5 +42,6 @@ public class Grabbable : MonoBehaviour {
       breakableJoint.breakForce = Mathf.Infinity;
       breakableJoint.breakTorque = Mathf.Infinity;
     }
+	scale = false; 
   }
 }

@@ -1,23 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Grapher2MathNet.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHandLeft.prefab">
     <Files>
-      <File FileName="Assets/Grapher2MathNet.cs" Line="93" Column="35" />
-      <File FileName="Assets/Grapher2MathNet.cs" Line="274" Column="2" />
-      <File FileName="Assets/Grapher2.cs" Line="1" Column="1" />
-      <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
-      <File FileName="Assets/LeapMotion/Scripts/LeapImageRetriever.cs" Line="1" Column="1" />
-      <File FileName="Assets/OVR/Scripts/OVRCameraController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Grapher1.cs" Line="1" Column="1" />
-      <File FileName="Assets/MathVRFuncs/LeapMotionImageMove" Line="1" Column="1" />
-      <File FileName="Assets/OVR/Scripts/OVRCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets/MathNetTest.cs" Line="1" Column="1" />
+      <File FileName="Assets/ScaleObject.cs" Line="23" Column="3" />
+      <File FileName="Assets/LeapMotion/DemoResources/Scripts/Grabbable.cs" Line="1" Column="1" />
+      <File FileName="Assets/ScaleObject.cs" Line="40" Column="1" />
+      <File FileName="Assets/LeapMotion/DemoResources/Scripts/GrabHand.cs" Line="22" Column="2" />
+      <File FileName="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHand.prefab" Line="1" Column="1" />
+      <File FileName="Assets/LeapMotion/Prefabs/HandPhysics/ThickRigidHandLeft.prefab" Line="26" Column="92" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="Grapher2MathNet.cs" selected="True" />
+            <Node name="LeapMotion" expanded="True" />
+            <Node name="OVR" expanded="True" />
           </Node>
         </State>
       </Pad>
