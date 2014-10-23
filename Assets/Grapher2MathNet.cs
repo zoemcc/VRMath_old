@@ -74,7 +74,7 @@ public class Grapher2MathNet : MonoBehaviour {
 		//polar grid
 		else if (gridOption == GridOption.Polar) {
 			float thetaIncBy  = (2.0f * Mathf.PI / (resolution - 1));
-			float radiusIncBy = 1.0f / (resolution - 1);
+			float radiusIncBy = 20.0f / (resolution - 1);
 			for (int thetaInc = 0; thetaInc < resolution; thetaInc++) {
 				for (int radiusInc = 0; radiusInc < resolution; radiusInc++) {
 					Vector3 p = new Vector3(radiusInc * radiusIncBy * Mathf.Cos(thetaInc * thetaIncBy), 0f, radiusInc * radiusIncBy * Mathf.Sin(thetaInc * thetaIncBy));
@@ -185,7 +185,6 @@ public class Grapher2MathNet : MonoBehaviour {
 
 		for (int i = 0; i < resolution; i++) {
 			float curInc = increment * i;
-			float debug = (float) xInterp.Interpolate(curInc);
 			Vector3 p = new Vector3((float) xInterp.Interpolate(curInc), 0.0f, (float) zInterp.Interpolate(curInc));
 			p.y = f(p, t); 
 			points[i].position = p;

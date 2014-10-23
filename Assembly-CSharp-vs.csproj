@@ -46,9 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GraphSetter.cs" />
      <Compile Include="Assets\Grapher1.cs" />
      <Compile Include="Assets\Grapher2.cs" />
      <Compile Include="Assets\Grapher2MathNet.cs" />
+     <Compile Include="Assets\HUDFPS.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\CubeWave.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\GrabHand.cs" />
      <Compile Include="Assets\LeapMotion\DemoResources\Scripts\Grabbable.cs" />
@@ -104,15 +106,19 @@
      <Compile Include="Assets\OVR\Scripts\OVRUGUI.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRUtils.cs" />
      <Compile Include="Assets\OVR\Scripts\OVRVisionGuide.cs" />
+     <Compile Include="Assets\OptimizationPlot.cs" />
      <Compile Include="Assets\ScaleObject.cs" />
+     <None Include="Assets\TestShader2.shader" />
      <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\LeapMotion\InteractionUtils (alpha)\readme.txt" />
      <None Include="Assets\MathNet.Numerics\MathNet.Iridium.xml" />
      <None Include="Assets\LeapMotion\readme.txt" />
+     <None Include="Assets\TestShader.shader" />
      <None Include="Assets\OVR\Shaders\TextShader3D.shader" />
      <None Include="Assets\LeapMotion\Shaders\RimShading.shader" />
      <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-BasicOutline.shader" />
+     <None Include="Assets\VertexDeformShader.shader" />
      <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-Lighted.shader" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
