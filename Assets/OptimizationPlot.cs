@@ -26,6 +26,21 @@ public class OptimizationPlot : MonoBehaviour {
 	};
 	
 	public FunctionOption function = FunctionOption.QuadraticForm;
+
+	public enum DescentOption {
+		GradientDescent,
+		NewtonsMethod,
+		BacktrackingGradientDescent
+	}
+	
+	private delegate Matrix DescentDelegate (Matrix m, float t);
+	private static FunctionDelegate[] descentDelegates = {
+		//GradientDescent,
+		//NewtonsMethod,
+		//BacktrackingGradientDescent
+	};
+	
+	public DescentOption descent;// = DescentOption.GradientDescent;
 	
 	[Range(0.05f, 5.0f)]
 	public float learningRate = 0.25f;
@@ -75,6 +90,8 @@ public class OptimizationPlot : MonoBehaviour {
 		Matrix currentPoint = new Matrix(new double[][] {
 			new double[] {xStart},
 			new double[] {zStart}});
+		Matrix currentGradient;
+		Matrix currentHessianInv;
 		Matrix lastPoint = currentPoint.Clone();
 		
 		double[] ts = new double[iterationCount + 1];
@@ -85,7 +102,10 @@ public class OptimizationPlot : MonoBehaviour {
 		
 		for (int i = 0; i < iterationCount; i++) {
 			ts[i] = i;
-			currentPoint = lastPoint - ((double) learningRate) * a * lastPoint;
+			currentGradient = a * lastPoint;
+			//currentHessianInv = a.Inverse();
+			//currentPoint = lastPoint - ((double) learningRate) * currentHessianInv * currentGradient;
+			currentPoint = lastPoint - ((double) learningRate) * currentGradient;
 			xs[i + 1] = currentPoint.GetArray()[0][0];
 			zs[i + 1] = currentPoint.GetArray()[1][0];
 			lastPoint = currentPoint.Clone();
@@ -142,7 +162,7 @@ public class OptimizationPlot : MonoBehaviour {
 			new double[] {p.z}});
 		Matrix vt = v.Clone();
 		vt.Transpose();
-		Matrix v3 = vt * a * v;
+		Matrix v3 = 0.5 * vt * a * v;
 		return (float) (v3.GetArray()[0][0] + 0.1);
 	}
 	
