@@ -42,7 +42,7 @@ public class ScaleObject : MonoBehaviour {
 		grabbed = gameObject.GetComponent<Grabbable>();
 		var t = gameObject.transform;
 	
-		if(grabbed && pinch && hands.Length>1){
+		if(grabbed.scale && pinch && hands.Length>1){
 
 			Vector3 current_pos = t.localPosition; 
 			Vector3 scale = poses[1] - poses[0]; 

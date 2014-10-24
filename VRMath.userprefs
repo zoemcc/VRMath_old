@@ -8,22 +8,12 @@
       <File FileName="Assets/Grapher2MathNet.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/Hands/RigidHand.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Move_Object.cs" Line="52" Column="6" />
+      <File FileName="Assets/Move_Object.cs" Line="53" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="LeapMotion" expanded="True">
-              <Node name="DemoResources" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="Hands" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Move_Object.cs" selected="True" />
-          </Node>
+        <State expanded="True" selected="True">
+          <Node name="Assembly-CSharp" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
