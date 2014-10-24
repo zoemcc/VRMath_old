@@ -1,30 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ScaleObject.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/PlotManager.cs">
     <Files>
       <File FileName="Assets/ScaleObject.cs" Line="32" Column="47" />
       <File FileName="Assets/OptimizationPlot.cs" Line="1" Column="1" />
-      <File FileName="Assets/GraphSetter.cs" Line="1" Column="1" />
-      <File FileName="Assets/VertexDeformShader.shader" Line="22" Column="38" />
-      <File FileName="Assets/Move_Object.cs" Line="26" Column="3" />
-      <File FileName="Assets/LeapMotion/DemoResources/Scripts/GrabHand.cs" Line="104" Column="1" />
-      <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="280" Column="19" />
-      <File FileName="Assets/LeapMotion/Scripts/Hands/HandModel.cs" Line="119" Column="24" />
+      <File FileName="Assets/GraphSetter.cs" Line="77" Column="32" />
+      <File FileName="Assets/VertexDeformShader.shader" Line="1" Column="9" />
+      <File FileName="Assets/Move_Object.cs" Line="1" Column="1" />
+      <File FileName="Assets/LeapMotion/DemoResources/Scripts/GrabHand.cs" Line="1" Column="1" />
+      <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
+      <File FileName="Assets/LeapMotion/Scripts/Hands/HandModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/PlotManager.cs" Line="11" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="LeapMotion" expanded="True">
-              <Node name="DemoResources" expanded="True">
-                <Node name="Scripts" expanded="True" />
-              </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="Hands" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="ScaleObject.cs" selected="True" />
+            <Node name="PlotManager.cs" selected="True" />
           </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True" />
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">

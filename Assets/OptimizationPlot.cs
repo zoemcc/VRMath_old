@@ -43,13 +43,13 @@ public class OptimizationPlot : MonoBehaviour {
 	public DescentOption descent;// = DescentOption.GradientDescent;
 	
 	[Range(0.05f, 5.0f)]
-	public float learningRate = 0.25f;
+	public float learningRate = 0.55f;
 	
 	[Range(10, 500)]
 	public int resolution = 50;
 	
 	[Range(1, 100)]
-	public int iterationCount = 100;
+	public int iterationCount = 5;
 	
 	[Range(-0.5f, 0.5f)]
 	public float xStart = -0.2f;
