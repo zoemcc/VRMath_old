@@ -44,7 +44,7 @@ public class Move_Object : MonoBehaviour {
 
 		var t = gameObject.transform;
 		
-		if(grabbed && pinch && hands.Length==1){
+		if(grabbed.scale && pinch && hands.Length==1){
 			
 
 			t.localRotation = rotates[0]; 
