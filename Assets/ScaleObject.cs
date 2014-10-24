@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ScaleObject : MonoBehaviour {
 
@@ -29,34 +30,34 @@ public class ScaleObject : MonoBehaviour {
 	
 		if (grabbed.scale) {
 
-			HandModel[] hands = h.GetAllPhysicsHands();
+			Dictionary<int, HandModel> hands = h.hand_physics_; 
 			bool pinch = true;  
 			Vector3[] poses = new Vector3[2]; 
-			for (int i=0; i<hands.Length; i++) {
+			print (hands.Count);
+			int k = 0;
+			foreach (HandModel hand in h.hand_physics_.Values){
 
-				HandModel hand = hands [i]; 
 				GrabHand grab_hand;
 				grab_hand = hand.GetComponent<GrabHand> ();
 
 				pinch = grab_hand.pinching_ && pinch; 
-				poses [i] = hand.GetPalmPosition (); 
+				poses [k] = hand.GetPalmPosition (); 
+				k++;
 			}
 
+		
 
-
-
-
-
-			if (pinch && hands.Length > 1) {
+			if (pinch && hands.Count > 1) {
 
 				Vector3 current_pos = t.localPosition; 
 				Vector3 scale = poses [1] - poses [0]; 
-				for (int i=0; i<2; i++) {
+				for (int i=0; i<3; i = i + 2) {
 					if (scale [i] < 0) {
 						scale [i] = -scale [i];
 					}
 					scale [i] = scale [i] / 2.0f; 
 				}
+				scale[1] = 2.0f;
 
 				print (scale);
 				t.localScale = scale;
@@ -65,5 +66,6 @@ public class ScaleObject : MonoBehaviour {
 
 		}
 		t.localPosition = pos; 
+
 	}
 }

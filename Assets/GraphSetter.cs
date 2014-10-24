@@ -57,16 +57,17 @@ public class GraphSetter : MonoBehaviour {
 		float t = Time.timeSinceLevelLoad;
 		Vector3 scale = controlCube.transform.localScale;
 
-		/*   Grabby interaction
-		float diagComponent0 = 1.0f / scale[0];
-		float diagComponent2 = 1.0f / scale[2];
+		/*   Grabby interaction */
+		float diagComponent0 = 2.0f / Mathf.Abs(scale[0]);
+		float diagComponent2 = 2.0f / Mathf.Abs(scale[2]);
 		float offDiagComponent = 0.0f;
-		*/
 
-		/*   Sinusoidal watching */
+
+		/*   Sinusoidal watching 
 		float diagComponent0 = Mathf.Sin (t) + 1.5f;
 		float diagComponent2 = Mathf.Cos (t) + 1.5f;
 		float offDiagComponent = 0.5f * Mathf.Sin (1.8f * t) + 0.2f;
+		*/
 
 		QuadForm [0, 0] = diagComponent0;
 		QuadForm [2, 2] = diagComponent2;

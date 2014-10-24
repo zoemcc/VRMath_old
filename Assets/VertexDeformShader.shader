@@ -42,7 +42,7 @@
             output.pos = mul(UNITY_MATRIX_MVP, blendedVertex);
             
  
-            output.col = float4(remainderHeight, 1.0 - remainderHeight, height / 0.5, 1.0); 
+            output.col = float4(remainderHeight, 1.0 - remainderHeight, height / 0.5, 0.7); 
                // visualize weight0 as red and weight1 as green
             return output;
          }

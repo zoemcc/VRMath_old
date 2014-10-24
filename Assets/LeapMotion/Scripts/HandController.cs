@@ -42,7 +42,7 @@ public class HandController : MonoBehaviour {
   Controller leap_controller_;
 
   Dictionary<int, HandModel> hand_graphics_;
-  Dictionary<int, HandModel> hand_physics_;
+  public Dictionary<int, HandModel> hand_physics_;
   Dictionary<int, ToolModel> tools_;
   
   void OnDrawGizmos() {
