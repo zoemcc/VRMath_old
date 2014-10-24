@@ -94,6 +94,7 @@ public class Slides : MonoBehaviour {
 				gameObject.renderer.material.SetTexture("_MainTex",slide4);
 					print ("setting slide4");	
 					gameObject.SetActive(false);
+
 					break;
 			}
 		
