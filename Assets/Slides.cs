@@ -42,7 +42,7 @@ public class Slides : MonoBehaviour {
 			slide4 = loadedS4.texture;
 			
 			//gameObject.guiTexture.texture = slide1;
-			gameObject.renderer.material = slide1;
+			gameObject.renderer.material.SetTexture("slide1",slide1);
 		}
 	}
 	
@@ -73,18 +73,19 @@ public class Slides : MonoBehaviour {
 			switch (Button.scene)
 			{
 				case 1:
-					gameObject.guiTexture.texture = slide1;
+					gameObject.renderer.material.SetTexture("slide1",slide1);
 					break;
 				case 2:
-					gameObject.guiTexture.texture = slide2;
+					gameObject.renderer.material.SetTexture("slide2",slide2);
 					break;
 				case 3:
-					gameObject.guiTexture.texture = slide3;
-					gameObject.SetActive = false;
+					gameObject.renderer.material.SetTexture("slide3",slide3);
+					gameObject.SetActive(false);
 					break;
 				case 4: 
-					gameObject.SetActive = true;
-					gameObject.guiTexture.texture = slide4;
+					gameObject.renderer.material.SetTexture("slide4",slide4);
+					gameObject.SetActive(true);
+					//gameObject.guiTexture.texture = slide4;
 					break;
 			}
 		
