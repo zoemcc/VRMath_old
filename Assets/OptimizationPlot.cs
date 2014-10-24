@@ -49,17 +49,20 @@ public class OptimizationPlot : MonoBehaviour {
 	public int resolution = 50;
 	
 	[Range(1, 100)]
-	public int iterationCount = 100;
+	public int iterationCount = 5;
 	
 	[Range(-0.5f, 0.5f)]
-	public float xStart = -0.2f;
+	public float xStart = -0.1f;
 	
 	[Range(-0.5f, 0.5f)]
-	public float zStart = -.4f;
+	public float zStart = -0.14f;
 	
 	private int currentResolution;
 	private ParticleSystem.Particle[] optimizationPoints;
 	private LineRenderer optimizationRenderer;
+
+	Matrix quadForm2dim;
+	GameObject controlCube;
 	
 	private void CreateOptimizationPoints () {
 		currentResolution = resolution;
@@ -90,6 +93,7 @@ public class OptimizationPlot : MonoBehaviour {
 		//Material (Shader.Find (""));
 		//Material material = Material(Shader.Find ("Particles/Alpha Blended"));
 		//print (material);
+		controlCube = GameObject.Find ("ControlCube");
 		
 	}
 
@@ -102,8 +106,21 @@ public class OptimizationPlot : MonoBehaviour {
 		float t = Time.timeSinceLevelLoad;
 
 		//optimization steps
+
+		Vector3 scale = controlCube.transform.localScale;
+
+		xStart = -0.5f * Mathf.Sin (t);
+		zStart = -0.5f * Mathf.Cos (0.7f * t);
 		
-		Matrix a = QuadraticFormMatrix(t);
+		/*   Grabby interaction */
+		float xx = 1.0f / Mathf.Abs(scale[0]);
+		float zz = 1.0f / Mathf.Abs(scale[2]);
+		float xz = 0.0f;
+
+		Matrix a = new Matrix (new double[][] {
+			new double[] { xx, xz },
+			new double[] { xz, zz } });
+		//Matrix a = QuadraticFormMatrix(t);
 		
 		Matrix currentPoint = new Matrix(new double[][] {
 			new double[] {xStart},
@@ -122,7 +139,11 @@ public class OptimizationPlot : MonoBehaviour {
 		Vector3 curVertex = new Vector3();
 		curVertex.x = (float) currentPoint.GetArray()[0][0];
 		curVertex.z = (float) currentPoint.GetArray()[1][0];
-		curVertex.y = f(curVertex, t);
+		//curVertex.y = f(curVertex, t);
+
+		Matrix currentPointTranspose = currentPoint.Clone ();
+		currentPointTranspose.Transpose ();
+		curVertex.y = (float) (0.5 * currentPointTranspose * a * currentPoint).GetArray () [0] [0] + 0.000001f; 
 		optimizationRenderer.SetPosition (0, curVertex);
 		
 		for (int i = 0; i < iterationCount; i++) {
@@ -136,7 +157,14 @@ public class OptimizationPlot : MonoBehaviour {
 
 			curVertex.x = (float) currentPoint.GetArray()[0][0];
 			curVertex.z = (float) currentPoint.GetArray()[1][0];
-			curVertex.y = f(curVertex, t) + 0.1f;
+
+			//float height = f(curVertex, t) + 0.1f;
+
+			currentPointTranspose = currentPoint.Clone ();
+			currentPointTranspose.Transpose ();
+			float height =  (float) (0.5 * currentPointTranspose * a * currentPoint).GetArray () [0] [0] + 0.000001f; 
+			curVertex.y = height;
+
 			optimizationRenderer.SetPosition(i + 1, curVertex);
 			lastPoint = currentPoint;
 		}

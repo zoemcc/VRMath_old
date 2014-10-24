@@ -51,12 +51,13 @@ public class ScaleObject : MonoBehaviour {
 
 				Vector3 current_pos = t.localPosition; 
 				Vector3 scale = poses [1] - poses [0]; 
-				for (int i=0; i<2; i++) {
+				for (int i=0; i<3; i = i + 2) {
 					if (scale [i] < 0) {
 						scale [i] = -scale [i];
 					}
 					scale [i] = scale [i] / 2.0f; 
 				}
+				scale[1] = 2.0f;
 
 				print (scale);
 				t.localScale = scale;
