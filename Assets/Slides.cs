@@ -18,7 +18,8 @@ public class Slides : MonoBehaviour {
 	static Texture slide2;
 	static Texture slide3;
 	static Texture slide4;
-	
+	GameObject Butn; 
+	Button button; 
 	static int i = 0; 
 	
 	IEnumerator Start () {
@@ -33,7 +34,8 @@ public class Slides : MonoBehaviour {
 		
 		loadedS4 = new WWW (s4);
 		yield return loadedS4;
-		
+		Butn = GameObject.Find ("Button 1"); 
+		button = Butn.GetComponent<Button> (); 
 		if (loadedS1.isDone && loadedS2.isDone && loadedS3.isDone && loadedS4.isDone) {
 			print ("loaded all");
 			slide1 = loadedS1.texture;
@@ -42,7 +44,7 @@ public class Slides : MonoBehaviour {
 			slide4 = loadedS4.texture;
 			
 			//gameObject.guiTexture.texture = slide1;
-			gameObject.renderer.material = slide1;
+			gameObject.renderer.material.SetTexture("_MainTex", slide1);
 		}
 	}
 	
@@ -67,24 +69,31 @@ public class Slides : MonoBehaviour {
 		if (Input.GetKeyDown ("space")) {
 			print ("key down");		
 		}*/
+		print (button.scene); 
+		if (button.update) {
 
-		if (Button.update) {
-
-			switch (Button.scene)
+			switch (button.scene)
 			{
 				case 1:
-					gameObject.guiTexture.texture = slide1;
+					//gameObject.guiTexture.texture = slide1;
+					gameObject.renderer.material.SetTexture("_MainTex",slide2);
+					print ("setting slide1");
 					break;
 				case 2:
-					gameObject.guiTexture.texture = slide2;
+					//gameObject.guiTexture.texture = slide2;
+				gameObject.renderer.material.SetTexture("_MainTex",slide3);
+					print ("setting slide2");	
 					break;
 				case 3:
-					gameObject.guiTexture.texture = slide3;
-					gameObject.SetActive = false;
+				gameObject.renderer.material.SetTexture("_MainTex",slide4);
+					print ("setting slide3");	
+					//gameObject.SetActive(false);
 					break;
 				case 4: 
-					gameObject.SetActive = true;
-					gameObject.guiTexture.texture = slide4;
+				    gameObject.SetActive(true);
+				gameObject.renderer.material.SetTexture("_MainTex",slide4);
+					print ("setting slide4");	
+					gameObject.SetActive(false);
 					break;
 			}
 		

@@ -112,6 +112,7 @@
      <Compile Include="Assets\OptimizationPlot.cs" />
      <Compile Include="Assets\PlotManager.cs" />
      <Compile Include="Assets\ScaleObject.cs" />
+     <Compile Include="Assets\Slides.cs" />
      <None Include="Assets\builtin_shaders-4.5.5\DefaultResourcesExtra\Mobile\Mobile-BumpSpec-1DirectionalLight.shader" />
      <None Include="Assets\TestShader2.shader" />
      <None Include="Assets\builtin_shaders-4.5.5\DefaultResourcesExtra\Particle Add.shader" />

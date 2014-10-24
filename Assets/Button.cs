@@ -5,8 +5,8 @@ public class Button : MonoBehaviour {
 
 	// Use this for initialization
 
-	static public int scene = 0; 
-    static public bool update = false; 
+	public int scene = 0; 
+    public bool update = false; 
 
 	void Start () {
 	
@@ -16,12 +16,13 @@ public class Button : MonoBehaviour {
 	void Update () {
 		Grabbable grabbed;
 		grabbed = gameObject.GetComponent<Grabbable>();
-		if (grabbed.scale && !Button.update) {
+
+		if (grabbed.scale && !update) {
 			scene = scene + 1; 
-			Button.update = true; 
+			update = true; 
 		} 
-		else if (!grabbed.scale && Button.update) {
-			Button.update = false; 
+		else if (!grabbed.scale && update) {
+			update = false; 
 		}
 	}
 }
