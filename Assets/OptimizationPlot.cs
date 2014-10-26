@@ -43,13 +43,13 @@ public class OptimizationPlot : MonoBehaviour {
 	public DescentOption descent;// = DescentOption.GradientDescent;
 	
 	[Range(0.05f, 5.0f)]
-	public float learningRate = 0.25f;
+	public float learningRate = 0.3f;
 	
 	[Range(10, 500)]
 	public int resolution = 50;
 	
 	[Range(1, 100)]
-	public int iterationCount = 5;
+	public int iterationCount = 12;
 	
 	[Range(-0.5f, 0.5f)]
 	public float xStart = -0.1f;
@@ -87,7 +87,7 @@ public class OptimizationPlot : MonoBehaviour {
 		optimizationRenderer = gameObject.AddComponent<LineRenderer>();
 		//optimizationRenderer = new LineRenderer();
 		optimizationRenderer.SetWidth (0.01f, 0.01f);
-		optimizationRenderer.SetColors (Color.blue, Color.blue);
+		optimizationRenderer.SetColors (Color.blue, Color.red);
 		optimizationRenderer.material.shader = Shader.Find ("Particles/Alpha Blended");
 		print (optimizationRenderer.material);
 		//Material (Shader.Find (""));
@@ -113,8 +113,8 @@ public class OptimizationPlot : MonoBehaviour {
 		zStart = -0.5f * Mathf.Cos (0.7f * t);
 		
 		/*   Grabby interaction */
-		float xx = 1.0f / Mathf.Abs(scale[0]);
-		float zz = 1.0f / Mathf.Abs(scale[2]);
+		float xx = 2.0f / Mathf.Abs(scale[0]);
+		float zz = 2.0f / Mathf.Abs(scale[2]);
 		float xz = 0.0f;
 
 		Matrix a = new Matrix (new double[][] {

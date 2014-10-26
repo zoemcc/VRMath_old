@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ScaleObject.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OptimizationPlot.cs">
     <Files>
-      <File FileName="Assets/ScaleObject.cs" Line="72" Column="1" />
-      <File FileName="Assets/ScaleObject.cs" Line="60" Column="19" />
-      <File FileName="Assets/OptimizationPlot.cs" Line="1" Column="1" />
+      <File FileName="Assets/ScaleObject.cs" Line="21" Column="3" />
+      <File FileName="Assets/OptimizationPlot.cs" Line="39" Column="19" />
       <File FileName="Assets/GraphSetter.cs" Line="1" Column="1" />
       <File FileName="Assets/VertexDeformShader.shader" Line="1" Column="1" />
       <File FileName="Assets/Move_Object.cs" Line="1" Column="1" />
@@ -12,13 +11,20 @@
       <File FileName="Assets/LeapMotion/Scripts/HandController.cs" Line="1" Column="1" />
       <File FileName="Assets/LeapMotion/Scripts/Hands/HandModel.cs" Line="1" Column="1" />
       <File FileName="Assets/PlotManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Slides.cs" Line="1" Column="1" />
+      <File FileName="Assets/Button.cs" Line="20" Column="25" />
+      <File FileName="Assets/builtin_shaders-4.5.5/DefaultResourcesExtra/Normal-Diffuse.shader" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="ScaleObject.cs" selected="True" />
+            <Node name="builtin_shaders-4.5.5" expanded="True">
+              <Node name="DefaultResourcesExtra" expanded="True" />
+            </Node>
+            <Node name="OptimizationPlot.cs" selected="True" />
           </Node>
+          <Node name="Assembly-CSharp-firstpass" expanded="True" />
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -27,9 +33,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/zoe/VRMath/Assets/OptimizationPlot.cs" line="168" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
