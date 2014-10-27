@@ -13,21 +13,28 @@ public class mathText2 : MonoBehaviour {
 	static string x_i = "x" + _i; 
 	static string y_i = "x" + _i; 
 	static string alpha = '\u0391'.ToString();
+	public string[,] mat;
 
 	// Use this for initialization
 	void Start () {
 		//Font font = new Font();
 		TextMesh t = gameObject.GetComponent("TextMesh") as TextMesh;
-		if (gameObject.name.Equals("GameObject")){
-			t.text = sampleGradient();
+		if (gameObject.name.Equals("EquationObject")){
+			t.text = sampleGradient("5");
 		}
-		if (gameObject.name.Equals("GameObject2")){
-			t.text = sampleMatrix(2,3);
+		print (gameObject.name);
+		if (gameObject.name.Equals("QuadraticForm")){
+			t.text = sampleQuadForm();
+		}
+
+		if (gameObject.name.Equals("MatrixObject")){
+			mat = sampleMatrix(2,3);
+			t.text = Mat2String(mat);
 			setPos (.5,.5,.5);
 			print (transform.position);
 			updatePos (3,3,3);
 			print (transform.position);
-			createNewTextMesh("testNewMesh");
+			//createNewTextMesh("testNewMesh");
 		}
 	}
 
@@ -46,7 +53,7 @@ public class mathText2 : MonoBehaviour {
 
 
 		//t.text = "testing new font";
-		GameObject prefab =	GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/GameObject2.prefab", typeof(GameObject))) as GameObject;
+		GameObject prefab =	GameObject.Instantiate( Resources.LoadAssetAtPath("Assets/MatrixObject.prefab", typeof(GameObject))) as GameObject;
 		TextMesh t = prefab.GetComponent("TextMesh") as TextMesh;
 		t.text = "this is the new text";
 			// = "this is the new prefab";
@@ -58,15 +65,19 @@ public class mathText2 : MonoBehaviour {
 
 
 	/* Printing samples */
-	string sampleMatrix(int rows, int col){
+	string[,] sampleMatrix(int rows, int col){
 		string[,] mat = zeros (rows,col);
 		mat [1, 1] = "7";
-		return  Mat2String (mat);//"test\nnewLine";
+		return  mat;
 	}
 
-	string sampleGradient() {
+	string sampleQuadForm(){
+		return "X'AX + B'X + C";
+	}
+
+	string sampleGradient(string alpha) {
 		//return sample gradient update
-		string[] start = {thetaJ,"-",alpha,"1/m"};
+		string[] start = {thetaJ,"-",alpha,"*","1/m"};
 		string s = sum + enclose(htheta + enclose (x_i,"(")+" - " + y_i,"(")+x_i+"j";
 		return enclose(thetaJ+":="+convert (start)+s,"{");
 	}
